@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JINX - Executores e Scripts</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #0f0f0f;
+      color: #fff;
+    }
+    header {
+      background-color: #1c1c1c;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      color: #3c8cff;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(90deg, #3c8cff 20%, #ffffff 50%, #3c8cff 80%);
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine-text 3s linear infinite;
+      font-size: 2.5rem;
+      font-weight: bold;
+      user-select: none;
+      margin: 0 auto;
+    }
+    @keyframes shine-text {
+      0% {
+        background-position: 200% 0;
+      }
+      100% {
+        background-position: -200% 0;
+      }
+    }
+    .section {
+      padding: 30px 10px;
+      background-color: #1c1c1c;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      background-color: #2b2b2b;
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: 0 0 10px rgba(0,200,255,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      max-height: 160px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .card h3 {
+      color: #3c8cff;
+      margin: 10px 0 5px;
+    }
+    .card p {
+      font-size: 14px;
+      color: #ccc;
+      min-height: 60px;
+    }
+    .download-button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background-color: #3c8cff;
+      color: #000;
+      text-decoration: none;
+      border-radius: 5px;
+      display: inline-block;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      animation: pulse 2s infinite;
+    }
+    .download-button:hover {
+      background-color: #00c9ff;
+      box-shadow: 0 0 15px rgba(60, 140, 255, 0.5);
+      animation: none;
+    }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(60, 140, 255, 0.7);
+      }
+      70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 10px rgba(60, 140, 255, 0);
+      }
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(60, 140, 255, 0);
+      }
+    }
+    footer {
+      background-color: #1c1c1c;
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+    }
+
+    .logo-section {
+      background-color: #1c1c1c;
+      padding: 30px 10px 15px;
+      text-align: center;
+    }
+    .logo-section img.logo {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid rgba(0, 100, 255, 0.4);
+      display: block;
+      margin: 0 auto 15px;
+      box-shadow: 0 0 15px rgba(0, 100, 255, 0.5);
+      transition: transform 0.3s ease;
+    }
+    .logo-section img.logo:hover {
+      transform: rotate(5deg);
+    }
+    .logo-section h1 {
+      font-size: 2.5rem;
+      color: #55aaff;
+      text-shadow:
+        0 0 6px #55aaff,
+        0 0 15px #55aaff,
+        0 0 20px #55aaff;
+      margin: 0 0 20px;
+      user-select: none;
+    }
+    .logo-section .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .logo-section .social-links a img {
+      width: 50px;
+      height: 50px;
+      border-radius: 0;
+      transition: all 0.3s ease;
+    }
+    .logo-section .social-links a:hover img {
+      transform: scale(1.1);
+      filter: drop-shadow(0 0 8px #3c8cff);
+    }
+  </style>
+</head>
+<body>
+
+  <section class="logo-section">
+    <img class="logo" src="https://i.imgur.com/7iItvBh.png" alt="JINXscripts logo" />
+    <h1>JINXscripts</h1>
+    <div class="social-links">
+      <a href="https://youtube.com/@jinx_scripts?si=-f1Z0Ql2zHC2d1hC" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+      </a>
+      <a href="https://discord.gg/Tj2fjMCBED" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+      </a>
+    </div>
+  </section>
+
+  <main>
+    <header>
+      <h1>EXECUTORES</h1>
+    </header>
+
+    <section class="section">
+      <div class="grid">
+        <div class="card">
+          <img src="https://i.imgur.com/nQwZknY.png" alt="Delta Executor" />
+          <h3>Delta Executor</h3>
+          <p>Executor atualizado e estável, ideal para scripts Roblox.</p>
+          <a href="https://www.mediafire.com/file/x8kaova1oq5eo2q/Delta-2.673.713.apk" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/1X1YnVl.png" alt="KRNL" />
+          <h3>KRNL Executor</h3>
+          <p>Popular executor gratuito com suporte para vários jogos.</p>
+          <a href="https://www.mediafire.com/file/nw4mnufljmk5pdf/krnl_release_2.673.710_2025.5.30_28.apk/file" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/cbL3hla.png" alt="Trigon" />
+          <h3>Fluxus Android</h3>
+          <p>Executor .lua para dispositivos móveis com interface simples.</p>
+          <a href="https://www.mediafire.com/file/z542j1lflbvoiqw/Trigon_2.673.17.apk/file" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/1X1YnVl.png" alt="KRNL" />
+          <h3>KRNL Executor</h3>
+          <p>Popular executor gratuito com suporte para vários jogos.</p>
+          <a href="https://www.mediafire.com/file/nw4mnufljmk5pdf/krnl_release_2.673.710_2025.5.30_28.apk/file" class="download-button">Download</a>
+          </div>
+        <div class="card">
+          <img src="https://i.imgur.com/4V7OLei.png" alt="Codex Executor" />
+          <h3>Codex Executor</h3>
+          <p>Executor moderno com suporte a múltiplas APIs e atualizações constantes.</p>
+          <a href="https://www.mediafire.com/file/v4fiout63ecz33w/Codex+v2.673+AC+Bypass.apk/file" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/7v8eIYm.png" alt="Arceus Executor" />
+          <h3>Arceus X</h3>
+          <p>Um dos executores mais usados em dispositivos móveis para scripts .lua.</p>
+          <a href="https://www.mediafire.com/file/p6fwg6sv525karh/Roblox_Arceus_X_NEO_1.6.9.apk/file" class="download-button">Download</a>
+                  </div>
+        <div class="card">
+          <img src="https://i.imgur.com/Oh8fTlk.png" alt="Vega X" />
+          <h3>KRNL Executor</h3>
+          <p>Popular executor gratuito com suporte para vários jogos.</p>
+          <a href="https://www.mediafire.com/file/jfnzjk255uryuj3/Vega_X_2.673.1715.apk/file" class="download-button">Download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <header>
+      <h1>SCRIPTS</h1>
+    </header>
+
+    <section class="section">
+      <div class="grid">
+        <div class="card">
+          <img src="https://i.imgur.com/UNdzjUW.png" alt="Script Blox Fruits" />
+          <h3>Script Blox Fruits</h3>
+          <p>Auto farm, teleportes e muito mais para dominar o jogo.</p>
+          <a href="https://pastebin.com/uXg7t1JY" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/AEwjwNw.png" alt="Pet Simulator X" />
+          <h3>Script Pet Simulator X</h3>
+          <p>Ganhe moedas infinitas e abra ovos automaticamente.</p>
+          <a href="https://pastebin.com/qwVHUVbP" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/zhMd46O.png" alt="Arsenal Aimbot" />
+          <h3>Script Arsenal AimBot</h3>
+          <p>Melhore sua mira e domine o campo de batalha.</p>
+          <a href="https://pastebin.com/sHdm8NyG" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/Mx5IdOZ.png" alt="Blue Lock Script" />
+          <h3>Script Blue Lock</h3>
+          <p>Domine o campo com funções automáticas no game Blue Lock.</p>
+          <a href="https://pastebin.com/nh0rW834" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/wIsqE64.png" alt="Dead Rails Script" />
+          <h3>Script Dead Rails</h3>
+          <p>Script funcional com funções de auto kill, speed e mais.</p>
+          <a href="https://pastebin.com/7EbLDRNi" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/XWg3Dgu.png" alt="Grow a Garden Script" />
+          <h3>Script Grow a Garden</h3>
+          <p>Script com funções automáticas para facilitar o cultivo e evolução no jogo.</p>
+          <a href="https://pastebin.com/mVgSGU3z" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/AynjCpC.png" alt="Gum Infinity Script" />
+          <h3>Script Gum Infinity</h3>
+          <p>Script com auto farm, coletor automático de frutas e recursos extras para Gum Infinity.</p>
+          <a href="https://pastebin.com/XMkXLEXY" class="download-button">Download</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 JINX Scripts - Todos os direitos reservados.</p>
+    <p>Criado com ❤️ pelo DRKscripts</p>
+  </footer>
+
+</body>
+</html>

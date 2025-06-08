@@ -5,82 +5,175 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>JINX - Executores e Scripts</title>
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #0f0f0f;
-      color: #fff;
+      padding: 0;
     }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('https://i.imgur.com/zGqnf5R.jpeg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1;
+    }
+
+    .navbar {
+      background: linear-gradient(180deg, #1c1c1c, transparent);
+      padding: 15px;
+      text-align: center;
+      animation: fadeInDown 1s ease-out;
+      z-index: 100;
+    }
+
+    .navbar button {
+      background: linear-gradient(45deg, #3c8cff, #ff00ff);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .navbar button:hover {
+      background: linear-gradient(45deg, #00c9ff, #ff66ff);
+      transform: scale(1.05);
+      box-shadow: 0 0 10px rgba(60, 140, 255, 0.8);
+    }
+
+    .navbar button.active {
+      background: linear-gradient(45deg, #ff66ff, #00c9ff);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+    }
+
     header {
-      background-color: #1c1c1c;
+      background: linear-gradient(180deg, #1c1c1c, transparent);
       padding: 20px;
       text-align: center;
+      animation: fadeInDown 1s ease-out;
     }
+
     header h1 {
       color: #3c8cff;
-      position: relative;
-      display: inline-block;
-      background: linear-gradient(90deg, #3c8cff 20%, #ffffff 50%, #3c8cff 80%);
+      background: linear-gradient(90deg, #ff00ff, #3c8cff, #ffffff, #3c8cff, #ff00ff);
       background-size: 200% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       animation: shine-text 3s linear infinite;
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: bold;
       user-select: none;
       margin: 0 auto;
+      text-shadow: 0 0 10px rgba(60, 140, 255, 0.8);
     }
+
     @keyframes shine-text {
-      0% {
-        background-position: 200% 0;
-      }
-      100% {
-        background-position: -200% 0;
-      }
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
     }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     .section {
-      padding: 30px 10px;
-      background-color: #1c1c1c;
+      padding: 40px 10px;
+      background: rgba(28, 28, 28, 0.8);
+      margin: 20px auto;
+      border-radius: 10px;
+      max-width: 1300px;
+      animation: fadeIn 1.5s ease-out;
+      display: none;
     }
+
+    .section.active {
+      display: block;
+    }
+
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
       max-width: 1200px;
       margin: 0 auto;
     }
+
     .card {
-      background-color: #2b2b2b;
-      border-radius: 10px;
-      padding: 15px;
-      box-shadow: 0 0 10px rgba(0,200,255,0.1);
+      background: rgba(43, 43, 43, 0.9);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(60, 140, 255, 0.3);
       text-align: center;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 0.5s ease forwards;
+      animation-delay: calc(0.1s * var(--i));
     }
+
+    .card:nth-child(1) { --i: 1; }
+    .card:nth-child(2) { --i: 2; }
+    .card:nth-child(3) { --i: 3; }
+    .card:nth-child(4) { --i: 4; }
+    .card:nth-child(5) { --i: 5; }
+    .card:nth-child(6) { --i: 6; }
+    .card:nth-child(7) { --i: 7; }
+    .card:nth-child(8) { --i: 8; }
+
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-10px);
+      box-shadow: 0 0 20px rgba(60, 140, 255, 0.6);
     }
+
     .card img {
       width: 100%;
-      max-height: 160px;
+      max-height: 180px;
       object-fit: cover;
       border-radius: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      transition: transform 0.3s ease;
     }
+
+    .card img:hover {
+      transform: scale(1.05);
+    }
+
     .card h3 {
-      color: #3c8cff;
+      color: #ff00ff;
       margin: 10px 0 5px;
+      font-size: 1.5rem;
+      text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
     }
+
     .card p {
       font-size: 14px;
       color: #ccc;
       min-height: 60px;
     }
+
     .download-button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      background-color: #3c8cff;
-      color: #000;
+      margin-top: 15px;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #3c8cff, #ff00ff);
+      color: #fff;
       text-decoration: none;
       border-radius: 5px;
       display: inline-block;
@@ -89,84 +182,115 @@
       position: relative;
       overflow: hidden;
       animation: pulse 2s infinite;
+      box-shadow: 0 0 10px rgba(60, 140, 255, 0.5);
     }
+
     .download-button:hover {
-      background-color: #00c9ff;
-      box-shadow: 0 0 15px rgba(60, 140, 255, 0.5);
+      background: linear-gradient(45deg, #00c9ff, #ff66ff);
+      box-shadow: 0 0 20px rgba(60, 140, 255, 0.8);
       animation: none;
+      transform: scale(1.05);
     }
+
     @keyframes pulse {
-      0% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(60, 140, 255, 0.7);
-      }
-      70% {
-        transform: scale(1.05);
-        box-shadow: 0 0 0 10px rgba(60, 140, 255, 0);
-      }
-      100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(60, 140, 255, 0);
-      }
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(60, 140, 255, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(60, 140, 255, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(60, 140, 255, 0); }
     }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
     footer {
-      background-color: #1c1c1c;
+      background: linear-gradient(180deg, transparent, #1c1c1c);
       color: #aaa;
       text-align: center;
       padding: 20px;
       margin-top: 40px;
       font-size: 0.9rem;
+      animation: fadeIn 2s ease-out;
     }
 
     .logo-section {
-      background-color: #1c1c1c;
-      padding: 30px 10px 15px;
+      background: rgba(28, 28, 28, 0.8);
+      padding: 40px 10px 20px;
       text-align: center;
+      animation: fadeInDown 1s ease-out;
     }
+
     .logo-section img.logo {
-      width: 140px;
-      height: 140px;
+      width: 160px;
+      height: 160px;
       border-radius: 50%;
       object-fit: cover;
-      border: 3px solid rgba(0, 100, 255, 0.4);
+      border: 4px solid rgba(255, 0, 255, 0.5);
       display: block;
-      margin: 0 auto 15px;
-      box-shadow: 0 0 15px rgba(0, 100, 255, 0.5);
-      transition: transform 0.3s ease;
+      margin: 0 auto 20px;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+
     .logo-section img.logo:hover {
-      transform: rotate(5deg);
+      transform: rotate(10deg) scale(1.1);
+      box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
     }
+
     .logo-section h1 {
-      font-size: 2.5rem;
-      color: #55aaff;
+      font-size: 3rem;
+      color: #ff00ff;
       text-shadow:
-        0 0 6px #55aaff,
-        0 0 15px #55aaff,
-        0 0 20px #55aaff;
-      margin: 0 0 20px;
+        0 0 6px #ff00ff,
+        0 0 15px #ff00ff,
+        0 0 20px #ff00ff;
+      margin: 0 0 25px;
       user-select: none;
     }
+
     .logo-section .social-links {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 35px;
       flex-wrap: wrap;
     }
+
     .logo-section .social-links a img {
-      width: 50px;
-      height: 50px;
-      border-radius: 0;
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
       transition: all 0.3s ease;
     }
+
     .logo-section .social-links a:hover img {
-      transform: scale(1.1);
-      filter: drop-shadow(0 0 8px #3c8cff);
+      transform: scale(1.15);
+      filter: drop-shadow(0 0 10px #ff00ff);
+    }
+
+    @media (max-width: 768px) {
+      header h1, .logo-section h1 {
+        font-size: 2rem;
+      }
+      .card img {
+        max-height: 150px;
+      }
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .navbar button {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        margin: 5px;
+      }
     }
   </style>
 </head>
 <body>
-
   <section class="logo-section">
     <img class="logo" src="https://i.imgur.com/7iItvBh.png" alt="JINXscripts logo" />
     <h1>JINXscripts</h1>
@@ -180,12 +304,17 @@
     </div>
   </section>
 
-  <main>
-    <header>
-      <h1>EXECUTORES</h1>
-    </header>
+  <nav class="navbar">
+    <button class="tab-button active" onclick="showSection('executors')">Executores</button>
+    <button class="tab-button" onclick="showSection('executors-lite')">Executores Lite</button>
+    <button class="tab-button" onclick="showSection('scripts')">Scripts</button>
+  </nav>
 
-    <section class="section">
+  <main>
+    <section id="executors" class="section active">
+      <header>
+        <h1>EXECUTORES</h1>
+      </header>
       <div class="grid">
         <div class="card">
           <img src="https://i.imgur.com/nQwZknY.png" alt="Delta Executor" />
@@ -238,11 +367,48 @@
       </div>
     </section>
 
-    <header>
-      <h1>SCRIPTS</h1>
-    </header>
+    <section id="executors-lite" class="section">
+      <header>
+        <h1>EXECUTORES LITE</h1>
+      </header>
+      <div class="grid">
+        <div class="card">
+          <img src="https://i.imgur.com/HzKgECg.png" alt="Delta Lite Executor" />
+          <h3>Delta Lite</h3>
+          <p>Versão leve do Delta Executor, ideal para dispositivos com menos recursos.</p>
+          <a href="https://i-n.tech/?p=71820" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/jfujlYl.png" alt="Fluxus Lite Executor" />
+          <h3>Fluxus Lite</h3>
+          <p>Executor leve para Android, otimizado para desempenho em dispositivos básicos.</p>
+          <a href="https://i-n.tech/?p=71815" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/DPL0Ztw.png" alt="Evon Lite Executor" />
+          <h3>Evon Lite</h3>
+          <p>Versão leve do Evon Executor, otimizada para desempenho em dispositivos com recursos limitados.</p>
+          <a href="https://i-n.tech/?p=71805" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/ESRQ81S.png" alt="Krnl Lite Executor" />
+          <h3>Krnl Lite</h3>
+          <p>Versão simplificada do Krnl, ideal para dispositivos com menor capacidade de processamento.</p>
+          <a href="https://i-n.tech/?p=71810" class="download-button">Download</a>
+        </div>
+        <div class="card">
+          <img src="https://i.imgur.com/b6wRgCZ.png" alt="Frostware Lite Executor" />
+          <h3>Frostware Lite</h3>
+          <p>Versão leve do Frostware, projetada para oferecer estabilidade em dispositivos básicos.</p>
+          <a href="https://i-n.tech/?p=71800" class="download-button">Download</a>
+        </div>
+      </div>
+    </section>
 
-    <section class="section">
+    <section id="scripts" class="section">
+      <header>
+        <h1>SCRIPTS</h1>
+      </header>
       <div class="grid">
         <div class="card">
           <img src="https://i.imgur.com/UNdzjUW.png" alt="Script Blox Fruits" />
@@ -251,7 +417,9 @@
           <a href="https://pastebin.com/uXg7t1JY" class="download-button">Download</a>
         </div>
         <div class="card">
-          <img src="https://i.imgur.com/AEwjwNw.png" alt="Pet Simulator X" />
+          <img src="https://i.imgur.com/AEwjwNw.png" alt="Pet Simulator X
+
+" />
           <h3>Script Pet Simulator X</h3>
           <p>Ganhe moedas infinitas e abra ovos automaticamente.</p>
           <a href="https://pastebin.com/qwVHUVbP" class="download-button">Download</a>
@@ -295,5 +463,20 @@
     <p>Criado com ❤️ pelo DRKscripts</p>
   </footer>
 
+  <script>
+    function showSection(sectionId) {
+      document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+      });
+      document.getElementById(sectionId).classList.add('active');
+      event.target.classList.add('active');
+    }
+
+    // Show executors section by default
+    document.getElementById('executors').classList.add('active');
+  </script>
 </body>
-</html>
+          </html>

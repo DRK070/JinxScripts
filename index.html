@@ -137,6 +137,7 @@
     .card:nth-child(6) { --i: 6; }
     .card:nth-child(7) { --i: 7; }
     .card:nth-child(8) { --i: 8; }
+    .card:nth-child(9) { --i: 9; }
 
     .card:hover {
       transform: translateY(-10px);
@@ -323,6 +324,12 @@
           <a href="https://i-n.tech/?p=71675" class="download-button">Download</a>
         </div>
         <div class="card">
+          <img src="https://i.imgur.com/9gsfVl9.jpeg" alt="Ronix Executor" />
+          <h3>Ronix Executor</h3>
+          <p>Executor atualizado com suporte robusto para scripts e desempenho otimizado.</p>
+          <a href="https://i-n.tech/?p=71871" class="download-button">Download</a>
+        </div>
+        <div class="card">
           <img src="https://i.imgur.com/1X1YnVl.png" alt="KRNL" />
           <h3>KRNL Executor</h3>
           <p>Popular executor gratuito com suporte para vários jogos.</p>
@@ -417,9 +424,7 @@
           <a href="https://pastebin.com/uXg7t1JY" class="download-button">Download</a>
         </div>
         <div class="card">
-          <img src="https://i.imgur.com/AEwjwNw.png" alt="Pet Simulator X
-
-" />
+          <img src="https://i.imgur.com/AEwjwNw.png" alt="Pet Simulator X" />
           <h3>Script Pet Simulator X</h3>
           <p>Ganhe moedas infinitas e abra ovos automaticamente.</p>
           <a href="https://pastebin.com/qwVHUVbP" class="download-button">Download</a>
@@ -465,13 +470,17 @@
 
   <script>
     function showSection(sectionId) {
+      // Remove a classe 'active' de todas as seções
       document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
       });
+      // Remove a classe 'active' de todos os botões
       document.querySelectorAll('.tab-button').forEach(button => {
         button.classList.remove('active');
       });
+      // Adiciona a classe 'active' à seção correspondente
       document.getElementById(sectionId).classList.add('active');
+      // Adiciona a classe 'active' ao botão clicado
       event.target.classList.add('active');
     }
 
@@ -479,4 +488,4 @@
     document.getElementById('executors').classList.add('active');
   </script>
 </body>
-          </html>
+  </html>

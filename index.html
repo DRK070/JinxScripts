@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JINX - Executores e Scripts</title>
   <style>
     * {
@@ -31,6 +31,61 @@
       z-index: -1;
     }
 
+    /* Modal de seleção de modo */
+    .mode-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .mode-modal-content {
+      background: rgba(28, 28, 28, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(60, 140, 255, 0.8);
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .mode-modal-content h2 {
+      color: #ff00ff;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+    }
+
+    .mode-modal-content button {
+      background: linear-gradient(45deg, #3c8cff, #ff00ff);
+      color: #fff;
+      border: none;
+      padding: 12px 30px;
+      margin: 10px;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .mode-modal-content button:hover {
+      background: linear-gradient(45deg, #00c9ff, #ff66ff);
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(60, 140, 255, 0.8);
+    }
+
+    /* Conteúdo principal */
+    .main-content {
+      display: none;
+    }
+
+    /* Navbar */
     .navbar {
       background: linear-gradient(180deg, #1c1c1c, transparent);
       padding: 15px;
@@ -63,6 +118,7 @@
       box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
     }
 
+    /* Header */
     header {
       background: linear-gradient(180deg, #1c1c1c, transparent);
       padding: 20px;
@@ -84,16 +140,7 @@
       text-shadow: 0 0 10px rgba(60, 140, 255, 0.8);
     }
 
-    @keyframes shine-text {
-      0% { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-50px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
+    /* Seções */
     .section {
       padding: 40px 10px;
       background: rgba(28, 28, 28, 0.8);
@@ -110,7 +157,6 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 25px;
       max-width: 1200px;
       margin: 0 auto;
@@ -195,32 +241,7 @@
       transform: scale(1.05);
     }
 
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(60, 140, 255, 0.7); }
-      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(60, 140, 255, 0); }
-      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(60, 140, 255, 0); }
-    }
-
-    @keyframes fadeIn {
-      0% { opacity: 0; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes slideIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-
-    footer {
-      background: linear-gradient(180deg, transparent, #1c1c1c);
-      color: #aaa;
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      animation: fadeIn 2s ease-out;
-    }
-
+    /* Logo Section */
     .logo-section {
       background: rgba(28, 28, 28, 0.8);
       padding: 40px 10px 20px;
@@ -248,10 +269,7 @@
     .logo-section h1 {
       font-size: 3rem;
       color: #ff00ff;
-      text-shadow:
-        0 0 6px #ff00ff,
-        0 0 15px #ff00ff,
-        0 0 20px #ff00ff;
+      text-shadow: 0 0 6px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
       margin: 0 0 25px;
       user-select: none;
     }
@@ -275,17 +293,95 @@
       filter: drop-shadow(0 0 10px #ff00ff);
     }
 
+    /* Footer */
+    footer {
+      background: linear-gradient(180deg, transparent, #1c1c1c);
+      color: #aaa;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      animation: fadeIn 2s ease-out;
+    }
+
+    /* Animações */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes shine-text {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(60, 140, 255, 0.7); }
+      70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(60, 140, 255, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(60, 140, 255, 0); }
+    }
+
+    /* Modos */
+    .desktop .grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .desktop header h1,
+    .desktop .logo-section h1 {
+      font-size: 3rem;
+    }
+
+    .desktop .card img {
+      max-height: 180px;
+    }
+
+    .desktop .navbar button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin: 0 10px;
+    }
+
+    .mobile .grid {
+      grid-template-columns: 1fr;
+    }
+
+    .mobile header h1,
+    .mobile .logo-section h1 {
+      font-size: 2rem;
+    }
+
+    .mobile .card img {
+      max-height: 150px;
+    }
+
+    .mobile .navbar button {
+      padding: 8px 15px;
+      font-size: 0.9rem;
+      margin: 5px;
+    }
+
     @media (max-width: 768px) {
-      header h1, .logo-section h1 {
-        font-size: 2rem;
-      }
-      .card img {
-        max-height: 150px;
-      }
-      .grid {
+      body:not(.desktop):not(.mobile) .grid {
         grid-template-columns: 1fr;
       }
-      .navbar button {
+      body:not(.desktop):not(.mobile) header h1,
+      body:not(.desktop):not(.mobile) .logo-section h1 {
+        font-size: 2rem;
+      }
+      body:not(.desktop):not(.mobile) .card img {
+        max-height: 150px;
+      }
+      body:not(.desktop):not(.mobile) .navbar button {
         padding: 8px 15px;
         font-size: 0.9rem;
         margin: 5px;
@@ -294,239 +390,216 @@
   </style>
 </head>
 <body>
-  <section class="logo-section">
-    <img class="logo" src="https://i.imgur.com/7iItvBh.png" alt="JINXscripts logo" />
-    <h1>JINXscripts</h1>
-    <div class="social-links">
-      <a href="https://youtube.com/@jinx_scripts?si=-f1Z0Ql2zHC2d1hC" target="_blank" rel="noopener noreferrer">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-      </a>
-      <a href="https://discord.gg/Tj2fjMCBED" target="_blank" rel="noopener noreferrer">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
-      </a>
+  <!-- Modal de seleção de modo -->
+  <div class="mode-modal" id="modeModal">
+    <div class="mode-modal-content">
+      <h2>Escolha o Modo de Visualização</h2>
+      <button id="desktopBtn">Modo PC</button>
+      <button id="mobileBtn">Modo Celular</button>
     </div>
-  </section>
+  </div>
 
-  <nav class="navbar">
-    <button class="tab-button active" onclick="showSection('executors')">Executores</button>
-    <button class="tab-button" onclick="showSection('executors-lite')">Executores Lite</button>
-    <button class="tab-button" onclick="showSection('executors-vng')">Executores VNG</button>
-    <button class="tab-button" onclick="showSection('scripts')">Scripts</button>
-  </nav>
-
-  <main>
-    <section id="executors" class="section active">
-      <header>
-        <h1>EXECUTORES</h1>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <img src="https://i.imgur.com/nQwZknY.png" alt="Delta Executor" />
-          <h3>Delta Executor</h3>
-          <p>Executor confiável com suporte para scripts avançados e interface otimizada.</p>
-          <a href="https://i-n.tech/?p=72855" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/9gsfVl9.jpeg" alt="Ronix Executor" />
-          <h3>Ronix Executor</h3>
-          <p>Executor atualizado com suporte robusto para scripts e desempenho otimizado.</p>
-          <a href="https://i-n.tech/?p=72890" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/1X1YnVl.png" alt="KRNL" />
-          <h3>KRNL Executor</h3>
-          <p>Popular executor gratuito com suporte para vários jogos.</p>
-          <a href="https://i-n.tech/?p=72865" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/Sewebzr.png" alt="FLUXUS" />
-          <h3>Fluxus Android</h3>
-          <p>Executor .lua para dispositivos móveis com interface simples.</p>
-          <a href="https://i-n.tech/?p=71450" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/4V7OLei.png" alt="Codex Executor" />
-          <h3>Codex Executor</h3>
-          <p>Executor moderno com suporte a múltiplas APIs e atualizações constantes.</p>
-          <a href="https://i-n.tech/?p=73830" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/7v8eIYm.png" alt="Arceus Executor" />
-          <h3>Arceus X</h3>
-          <p>Um dos executores mais usados em dispositivos móveis para scripts .lua.</p>
-          <a href="https://i-n.tech/?p=72885" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/Oh8fTlk.png" alt="Vega X" />
-          <h3>Vega X</h3>
-          <p>Executor com interface moderna e recursos avançados para scripts.</p>
-          <a href="https://i-n.tech/?p=72870" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/RdWxAXl.png" alt="Evon Executor" />
-          <h3>Evon Executor</h3>
-          <p>Executor poderoso com interface intuitiva e suporte a scripts avançados.</p>
-          <a href="https://i-n.tech/?p=72147" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/Org2fLu.png" alt="Frostware Executor" />
-          <h3>Frostware Executor</h3>
-          <p>Executor estável com recursos exclusivos para melhor desempenho.</p>
-          <a href="https://i-n.tech/?p=71455" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/EKx61Zo.png" alt="Trigon Executor" />
-          <h3>Trigon Executor</h3>
-          <p>Executor avançado com suporte para scripts complexos e interface amigável.</p>
-          <a href="https://i-n.tech/?p=73820" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/FKYpAXU.png" alt="Cryptic Executor" />
-          <h3>Cryptic Executor</h3>
-          <p>Executor seguro com recursos otimizados para execução de scripts em vários jogos.</p>
-          <a href="https://i-n.tech/?p=73825" class="download-button">Download</a>
-        </div>
+  <!-- Conteúdo principal -->
+  <div class="main-content" id="mainContent">
+    <section class="logo-section">
+      <img class="logo" src="https://i.imgur.com/7iItvBh.png" alt="JINXscripts logo" />
+      <h1>JINXscripts</h1>
+      <div class="social-links">
+        <a href="https://youtube.com/@jinx_scripts?si=-f1Z0Ql2zHC2d1hC" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
+        </a>
+        <a href="https://discord.gg/Tj2fjMCBED" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="Discord">
+        </a>
       </div>
     </section>
 
-    <section id="executors-lite" class="section">
-      <header>
-        <h1>EXECUTORES LITE</h1>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <img src="https://i.imgur.com/HzKgECg.png" alt="Delta Lite Executor" />
-          <h3>Delta Lite</h3>
-          <p>Versão leve do Delta Executor, ideal para dispositivos com menos recursos.</p>
-          <a href="https://i-n.tech/?p=71820" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/jfujlYl.png" alt="Fluxus Lite Executor" />
-          <h3>Fluxus Lite</h3>
-          <p>Executor leve para Android, otimizado para desempenho em dispositivos básicos.</p>
-          <a href="https://i-n.tech/?p=71815" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/DPL0Ztw.png" alt="Evon Lite Executor" />
-          <h3>Evon Lite</h3>
-          <p>Versão leve do Evon Executor, otimizada para desempenho em dispositivos com recursos limitados.</p>
-          <a href="https://i-n.tech/?p=71805" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/ESRQ81S.png" alt="Krnl Lite Executor" />
-          <h3>Krnl Lite</h3>
-          <p>Versão simplificada do Krnl, ideal para dispositivos com menor capacidade de processamento.</p>
-          <a href="https://i-n.tech/?p=71810" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/b6wRgCZ.png" alt="Frostware Lite Executor" />
-          <h3>Frostware Lite</h3>
-          <p>Versão leve do Frostware, projetada para oferecer estabilidade em dispositivos básicos.</p>
-          <a href="https://i-n.tech/?p=71800" class="download-button">Download</a>
-        </div>
-      </div>
-    </section>
+    <nav class="navbar">
+      <button class="tab-button active" onclick="showSection('executors')">Executores</button>
+      <button class="tab-button" onclick="showSection('executors-lite')">Executores Lite</button>
+      <button class="tab-button" onclick="showSection('executors-vng')">Executores VNG</button>
+      <button class="tab-button" onclick="showSection('scripts')">Scripts</button>
+    </nav>
 
-    <section id="executors-vng" class="section">
-      <header>
-        <h1>EXECUTORES VNG</h1>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <img src="https://i.imgur.com/oF9fVcQ.png" alt="Krnl VNG Executor" />
-          <h3>Krnl VNG</h3>
-          <p>Versão VNG do Krnl, otimizada para scripts avançados e múltiplos jogos.</p>
-          <a href="https://i-n.tech/?p=73284" class="download-button">Download</a>
+    <main>
+      <section id="executors" class="section">
+        <header>
+          <h1>EXECUTORES</h1>
+        </header>
+        <div class="grid">
+          <div class="card">
+            <img src="https://i.imgur.com/nQwZknY.png" alt="Delta Executor" />
+            <h3>Delta Executor</h3>
+            <p>Executor confiável com suporte para scripts avançados e interface otimizada.</p>
+            <a href="https://i-n.tech/?p=72855" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/9gsfVl9.jpeg" alt="Ronix Executor" />
+            <h3>Ronix Executor</h3>
+            <p>Executor atualizado com suporte robusto para scripts e desempenho otimizado.</p>
+            <a href="https://i-n.tech/?p=72890" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/1X1YnVl.png" alt="KRNL" />
+            <h3>KRNL Executor</h3>
+            <p>Popular executor gratuito com suporte para vários jogos.</p>
+            <a href="https://i-n.tech/?p=72865" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/Sewebzr.png" alt="FLUXUS" />
+            <h3>Fluxus Android</h3>
+            <p>Executor .lua para dispositivos móveis com interface simples.</p>
+            <a href="https://i-n.tech/?p=71450" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/4V7OLei.png" alt="Codex Executor" />
+            <h3>Codex Executor</h3>
+            <p>Executor moderno com suporte a múltiplas APIs e atualizações constantes.</p>
+            <a href="https://i-n.tech/?p=73830" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/7v8eIYm.png" alt="Arceus Executor" />
+            <h3>Arceus X</h3>
+            <p>Um dos executores mais usados em dispositivos móveis para scripts .lua.</p>
+            <a href="https://i-n.tech/?p=72885" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/Oh8fTlk.png" alt="Vega X" />
+            <h3>Vega X</h3>
+            <p>Executor com interface moderna e recursos avançados para scripts.</p>
+            <a href="https://i-n.tech/?p=72870" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/RdWxAXl.png" alt="Evon Executor" />
+            <h3>Evon Executor</h3>
+            <p>Executor poderoso com interface intuitiva e suporte a scripts avançados.</p>
+            <a href="https://i-n.tech/?p=72147" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/Org2fLu.png" alt="Frostware Executor" />
+            <h3>Frostware Executor</h3>
+            <p>Executor estável com recursos exclusivos para melhor desempenho.</p>
+            <a href="https://i-n.tech/?p=71455" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/EKx61Zo.png" alt="Trigon Executor" />
+            <h3>Trigon Executor</h3>
+            <p>Executor avançado com suporte para scripts complexos e interface amigável.</p>
+            <a href="https://i-n.tech/?p=73820" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/FKYpAXU.png" alt="Cryptic Executor" />
+            <h3>Cryptic Executor</h3>
+            <p>Executor seguro com recursos otimizados para execução de scripts em vários jogos.</p>
+            <a href="https://i-n.tech/?p=73825" class="download-button">Download</a>
+          </div>
         </div>
-        <div class="card">
-          <img src="https://i.imgur.com/jLNGand.png" alt="Arceus X VNG Executor" />
-          <h3>Arceus X VNG</h3>
-          <p>Executor VNG do Arceus X, ideal para dispositivos móveis com suporte a scripts .lua.</p>
-          <a href="https://i-n.tech/?p=73294" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/OikoYqu.png" alt="Cryptic VNG Executor" />
-          <h3>Cryptic VNG</h3>
-          <p>Versão VNG do Cryptic, segura e otimizada para execução de scripts complexos.</p>
-          <a href="https://i-n.tech/?p=73279" class="download-button">Download</a>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="scripts" class="section">
-      <header>
-        <h1>SCRIPTS</h1>
-      </header>
-      <div class="grid">
-        <div class="card">
-          <img src="https://i.imgur.com/UNdzjUW.png" alt="Script Blox Fruits" />
-          <h3>Script Blox Fruits</h3>
-          <p>Auto farm, teleportes e muito mais para dominar o jogo.</p>
-          <a href="https://pastebin.com/uXg7t1JY" class="download-button">Download</a>
+      <section id="executors-lite" class="section">
+        <header>
+          <h1>EXECUTORES LITE</h1>
+        </header>
+        <div class="grid">
+          <div class="card">
+            <img src="https://i.imgur.com/HzKgECg.png" alt="Delta Lite Executor" />
+            <h3>Delta Lite</h3>
+            <p>Versão leve do Delta Executor, ideal para dispositivos com menos recursos.</p>
+            <a href="https://i-n.tech/?p=71820" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/jfujlYl.png" alt="Fluxus Lite Executor" />
+            <h3>Fluxus Lite</h3>
+            <p>Executor leve para Android, otimizado para desempenho em dispositivos básicos.</p>
+            <a href="https://i-n.tech/?p=71815" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/DPL0Ztw.png" alt="Evon Lite Executor" />
+            <h3>Evon Lite</h3>
+            <p>Versão leve do Evon Executor, otimizada para desempenho em dispositivos com recursos limitados.</p>
+            <a href="https://i-n.tech/?p=71805" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/ESRQ81S.png" alt="Krnl Lite Executor" />
+            <h3>Krnl Lite</h3>
+            <p>Versão simplificada do Krnl, ideal para dispositivos com menor capacidade de processamento.</p>
+            <a href="https://i-n.tech/?p=71810" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/b6wRgCZ.png" alt="Frostware Lite Executor" />
+            <h3>Frostware Lite</h3>
+            <p>Versão leve do Frostware, projetada para oferecer estabilidade em dispositivos básicos.</p>
+            <a href="https://i-n.tech/?p=71800" class="download-button">Download</a>
+          </div>
         </div>
-        <div class="card">
-          <img src="https://i.imgur.com/AEwjwNw.png" alt="Pet Simulator X" />
-          <h3>Script Pet Simulator X</h3>
-          <p>Ganhe moedas infinitas e abra ovos automaticamente.</p>
-          <a href="https://pastebin.com/qwVHUVbP" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/zhMd46O.png" alt="Arsenal Aimbot" />
-          <h3>Script Arsenal AimBot</h3>
-          <p>Melhore sua mira e domine o campo de batalha.</p>
-          <a href="https://pastebin.com/sHdm8NyG" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/Mx5IdOZ.png" alt="Blue Lock Script" />
-          <h3>Script Blue Lock</h3>
-          <p>Domine o campo com funções automáticas no game Blue Lock.</p>
-          <a href="https://pastebin.com/nh0rW834" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/wIsqE64.png" alt="Dead Rails Script" />
-          <h3>Script Dead Rails</h3>
-          <p>Script funcional com funções de auto kill, speed e mais.</p>
-          <a href="https://pastebin.com/7EbLDRNi" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/XWg3Dgu.png" alt="Grow a Garden Script" />
-          <h3>Script Grow a Garden</h3>
-          <p>Script com funções automáticas para facilitar o cultivo e evolução no jogo.</p>
-          <a href="https://pastebin.com/mVgSGU3z" class="download-button">Download</a>
-        </div>
-        <div class="card">
-          <img src="https://i.imgur.com/AynjCpC.png" alt="Gum Infinity Script" />
-          <h3>Script Gum Infinity</h3>
-          <p>Script com auto farm, coletor automático de frutas e recursos extras para Gum Infinity.</p>
-          <a href="https://pastebin.com/XMkXLEXY" class="download-button">Download</a>
-        </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <footer>
-    <p>© 2025 JINX Scripts - Todos os direitos reservados.</p>
-    <p>Criado com ❤️ pelo DRKscripts</p>
-  </footer>
+      <section id="executors-vng" class="section">
+        <header>
+          <h1>EXECUTORES VNG</h1>
+        </header>
+        <div class="grid">
+          <div class="card">
+            <img src="https://i.imgur.com/oF9fVcQ.png" alt="Krnl VNG Executor" />
+            <h3>Krnl VNG</h3>
+            <p>Versão VNG do Krnl, otimizada para scripts avançados e múltiplos jogos.</p>
+            <a href="https://i-n.tech/?p=73284" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/jLNGand.png" alt="Arceus X VNG Executor" />
+            <h3>Arceus X VNG</h3>
+            <p>Executor VNG do Arceus X, ideal para dispositivos móveis com suporte a scripts .lua.</p>
+            <a href="https://i-n.tech/?p=73294" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/OikoYqu.png" alt="Cryptic VNG Executor" />
+            <h3>Cryptic VNG</h3>
+            <p>Versão VNG do Cryptic, segura e otimizada para execução de scripts complexos.</p>
+            <a href="https://i-n.tech/?p=73279" class="download-button">Download</a>
+          </div>
+        </div>
+      </section>
 
-  <script>
-    function showSection(sectionId) {
-      // Remove a classe 'active' de todas as seções
-      document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-      });
-      // Remove a classe 'active' de todos os botões
-      document.querySelectorAll('.tab-button').forEach(button => {
-        button.classList.remove('active');
-      });
-      // Adiciona a classe 'active' à seção correspondente
-      document.getElementById(sectionId).classList.add('active');
-      // Adiciona a classe 'active' ao botão clicado
-      event.target.classList.add('active');
-    }
-
-    // Show executors section by default
-    document.getElementById('executors').classList.add('active');
-  </script>
-</body>
-            </html>
+      <section id="scripts" class="section">
+        <header>
+          <h1>SCRIPTS</h1>
+        </header>
+        <div class="grid">
+          <div class="card">
+            <img src="https://i.imgur.com/UNdzjUW.png" alt="Script Blox Fruits" />
+            <h3>Script Blox Fruits</h3>
+            <p>Auto farm, teleportes e muito mais para dominar o jogo.</p>
+            <a href="https://pastebin.com/uXg7t1JY" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/AEwjwNw.png" alt="Pet Simulator X" />
+            <h3>Script Pet Simulator X</h3>
+            <p>Ganhe moedas infinitas e abra ovos automaticamente.</p>
+            <a href="https://pastebin.com/qwVHUVbP" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/zhMd46O.png" alt="Arsenal Aimbot" />
+            <h3>Script Arsenal AimBot</h3>
+            <p>Melhore sua mira e domine o campo de batalha.</p>
+            <a href="https://pastebin.com/sHdm8NyG" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/Mx5IdOZ.png" alt="Blue Lock Script" />
+            <h3>Script Blue Lock</h3>
+            <p>Domine o campo com funções automáticas no game Blue Lock.</p>
+            <a href="https://pastebin.com/nh0rW834" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/wIsqE64.png" alt="Dead Rails Script" />
+            <h3>Script Dead Rails</h3>
+            <p>Script funcional com funções de auto kill, speed e mais.</p>
+            <a href="https://pastebin.com/7EbLDRNi" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/XWg3Dgu.png" alt="Grow a Garden Script" />
+            <h3>Script Grow a Garden</h3>
+            <p>Script com funções automáticas para facilitar o cultivo e evolução no jogo.</p>
+            <a href="https://pastebin.com/mVgSGU3z" class="download-button">Download</a>
+          </div>
+          <div class="card">
+            <img src="https://i.imgur.com/AynjCpC.png" alt="Gum Infinity 
